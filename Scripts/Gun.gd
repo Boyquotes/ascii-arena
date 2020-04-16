@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export (float) var muzzle_velocity = 20.0
-export (float) var bullet_range = 10.0
+export (float) var muzzle_velocity = 1500.0
+export (float) var bullet_range = 500.0
 
 onready var bullet = load("res://Scenes/Bullet.tscn")
 

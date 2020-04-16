@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var raycast = $RayCast2D
 var target = null
-var speed = 180
+var speed = 280
 
 var dead : bool = false
 

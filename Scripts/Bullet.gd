@@ -7,12 +7,12 @@ export (float) var bullet_speed
 func explode():
 	get_parent().remove_child(self)
 
-func _physics_process(_delta):
-	var collision_info = move_and_collide(bullet_direction * bullet_speed)
+func _physics_process(delta):
+	var collision_info = move_and_collide(bullet_direction * bullet_speed * delta)
 	if collision_info:
 		var collider = collision_info.get_collider()
-		if collider.has_method("die"):
-			collider.die()
+		if collider.has_method("hit"):
+			collider.hit()
 		explode()
 
 func _ready():

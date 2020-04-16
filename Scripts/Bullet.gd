@@ -10,6 +10,9 @@ func explode():
 func _physics_process(_delta):
 	var collision_info = move_and_collide(bullet_direction * bullet_speed)
 	if collision_info:
+		var collider = collision_info.get_collider()
+		if collider.has_method("die"):
+			collider.die()
 		explode()
 
 func _ready():

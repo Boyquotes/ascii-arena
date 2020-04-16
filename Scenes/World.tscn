@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Audio/what can be loosely defined as music.wav" type="AudioStream" id=1]
 [ext_resource path="res://Tilesets/Tilemaps/Walls.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/EnemyW.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/EnemyV.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/EnemyK.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
@@ -58,3 +59,6 @@ position = Vector2( 837.905, 764.521 )
 
 [node name="EnemyW3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1157.24, 324.905 )
+
+[node name="EnemyK" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1453.82, 891.118 )

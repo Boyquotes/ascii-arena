@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tilesets/basic-81pxw.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/EnemyV.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/EnemyK.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.6797, 25.524 )
@@ -19,13 +19,13 @@ angle = 90.0
 angle_random = 0.5
 color = Color( 1, 0, 0, 1 )
 
-[node name="EnemyV" type="KinematicBody2D"]
+[node name="EnemyK" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 14
-frame = 8
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3.40562 )

@@ -1,16 +1,22 @@
 extends KinematicBody2D
 
 onready var blood : Particles2D = $Blood
+onready var cooldown_timer : Timer = $Timer
+
 export var speed : int = 180
+export var damage : int = 5
+export var hit_rate : float = 2.0
 
 var target = null
-
 var dead : bool = false
+var can_hit : bool = true
 
 func _ready():
+	cooldown_timer.wait_time = 1.0 / hit_rate
+	cooldown_timer.connect("timeout", self, "_on_cooldown")
 	add_to_group("enemies")
 	
-func _physics_process(delta):
+func _process(delta):
 	if target == null:
 		return
 	
@@ -21,19 +27,24 @@ func _physics_process(delta):
 		var collision_info = move_and_collide(vec_to_player * speed * delta)
 		if collision_info:
 			var collider = collision_info.get_collider()
-			if collider.has_method("hit") and !collider.is_in_group("enemies"):
-				collider.hit()
+			if collider.has_method("hit") and !collider.is_in_group("enemies") and can_hit:
+				can_hit = !can_hit
+				cooldown_timer.start()
+				collider.hit(damage)
 
-func set_target(t):
+func _on_cooldown() -> void:
+	can_hit = true	
+
+func set_target(t) -> void:
 	target = t
 
-func hit():
+func hit() -> void:
 	die()
 
-func delete_self():
+func delete_self() -> void:
 	get_parent().remove_child(self)
 
-func die():
+func die() -> void:
 	if !dead:
 		dead = !dead
 		

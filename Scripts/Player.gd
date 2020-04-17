@@ -1,4 +1,5 @@
 extends KinematicBody2D
+
 var velocity: Vector2
 var BASE_SPEED = 300
 
@@ -18,5 +19,5 @@ func handle_input():
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
-func hit():
-	pass
+func hit(damage: int):
+	get_tree().call_group("lifetime_ui", "decrement", damage if damage else 1)

@@ -36,6 +36,10 @@ func delete_self():
 func die():
 	if !dead:
 		dead = !dead
+		
+		set_collision_layer_bit(0, false)
+		set_collision_mask_bit(0, false)
+		
 		speed = 0
 		rotation += 90
 		blood.emitting = true

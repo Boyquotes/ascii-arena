@@ -19,5 +19,4 @@ func handle_input():
 	velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
 func hit():
-	print("I'm Hit!")
-
+	pass

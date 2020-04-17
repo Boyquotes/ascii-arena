@@ -1,23 +1,34 @@
 extends KinematicBody2D
 
-var velocity: Vector2
-var BASE_SPEED = 300
+onready var blood : Particles2D = $Blood
 
-func _ready():
+export var speed : int = 300
+
+var velocity: Vector2
+
+func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	get_tree().call_group("enemies", "set_target", self)
+	add_to_group("player")
 
-func _physics_process(delta):
+func _process(delta) -> void:
 	handle_input()
-	move_and_collide(velocity * BASE_SPEED * delta)
+	move_and_collide(velocity * speed * delta)
 	
 	if Input.is_action_just_pressed("respawn"):
 		get_tree().reload_current_scene()
 
-func handle_input():
+func handle_input() -> void:
 	velocity = Vector2.ZERO
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
-func hit(damage: int):
+func hit(damage: int) -> void:
 	get_tree().call_group("lifetime_ui", "decrement", damage if damage else 1)
+
+func die() -> void:
+	remove_child($Gun)
+	
+	rotation += 90
+	speed = 0
+	blood.emitting = true

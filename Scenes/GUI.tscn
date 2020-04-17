@@ -15,22 +15,23 @@ font_data = ExtResource( 2 )
 script = ExtResource( 4 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 512.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 512, 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_right = 512.0
-margin_bottom = 53.0
+margin_bottom = 32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bars" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_right = 512.0
-margin_bottom = 53.0
+margin_bottom = 32.0
 
 [node name="Bar" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Bars"]
 margin_right = 512.0
@@ -54,8 +55,7 @@ value = 60.0
 texture_progress = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Bars/Bar/Lifetime"]
-margin_left = 12.0
-margin_right = 488.0
+margin_right = 512.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 488, 32 )
 custom_fonts/font = SubResource( 1 )

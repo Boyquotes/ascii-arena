@@ -7,11 +7,11 @@
 [ext_resource path="res://Audio/Loading a Gun.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scripts/CameraShake.gd" type="Script" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 30.637
 height = 13.4806
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 36.2119, 5.62119 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -32,7 +32,7 @@ hframes = 14
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Gun" type="KinematicBody2D" parent="."]
 collision_layer = 0
@@ -51,7 +51,7 @@ position = Vector2( 128, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
 position = Vector2( 85.7084, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="FireNoise" type="AudioStreamPlayer2D" parent="Gun"]
 stream = ExtResource( 4 )

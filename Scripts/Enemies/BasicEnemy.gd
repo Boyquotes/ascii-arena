@@ -33,7 +33,7 @@ func _process(delta):
 				collider.hit(damage)
 
 func _on_cooldown() -> void:
-	can_hit = true	
+	can_hit = true
 
 func set_target(t) -> void:
 	target = t

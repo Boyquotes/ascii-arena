@@ -5,9 +5,9 @@
 [ext_resource path="res://Tilesets/Tilemaps/Items.tres" type="TileSet" id=3]
 [ext_resource path="res://Tilesets/Tilemaps/Ground.tres" type="TileSet" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/EnemyW.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/EnemyV.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/EnemyK.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Enemies/EnemyK.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Enemies/EnemyV.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Enemies/EnemyW.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
@@ -42,23 +42,11 @@ stream = ExtResource( 1 )
 volume_db = -20.0
 autoplay = true
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 757.514, 482.575 )
+[node name="EnemyK" parent="." instance=ExtResource( 6 )]
+position = Vector2( 725.477, 505.827 )
 
-[node name="KinematicBody2D3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 528.398, 1008.11 )
+[node name="EnemyV" parent="." instance=ExtResource( 7 )]
+position = Vector2( 596.749, 562.108 )
 
-[node name="KinematicBody2D2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1484.96, 242.003 )
-
-[node name="EnemyW" parent="." instance=ExtResource( 7 )]
-position = Vector2( 428.361, 720.13 )
-
-[node name="EnemyW2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 837.905, 764.521 )
-
-[node name="EnemyW3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1157.24, 324.905 )
-
-[node name="EnemyK" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1453.82, 891.118 )
+[node name="EnemyW" parent="." instance=ExtResource( 8 )]
+position = Vector2( 412.337, 568.695 )

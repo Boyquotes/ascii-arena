@@ -1,14 +1,11 @@
 extends KinematicBody2D
 
-onready var raycast = $RayCast2D
+onready var blood : Particles2D = $Blood
+export var speed : int = 180
+
 var target = null
-var speed = 280
 
 var dead : bool = false
-
-func set_target(t):
-	target = t
-	
 
 func _ready():
 	add_to_group("enemies")
@@ -19,12 +16,16 @@ func _physics_process(delta):
 	
 	if dead == false:
 		var vec_to_player = (target.global_position - global_position).normalized()
+
 		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 		var collision_info = move_and_collide(vec_to_player * speed * delta)
 		if collision_info:
 			var collider = collision_info.get_collider()
-			if collider.has_method("hit"):
+			if collider.has_method("hit") and !collider.is_in_group("enemies"):
 				collider.hit()
+
+func set_target(t):
+	target = t
 
 func hit():
 	die()
@@ -37,7 +38,7 @@ func die():
 		dead = !dead
 		speed = 0
 		rotation += 90
-		$Blood.emitting = true
+		blood.emitting = true
 		
 		var timer = Timer.new()
 		timer.set_wait_time(5)

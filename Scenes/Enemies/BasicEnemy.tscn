@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Enemies/BasicEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Tilesets/basic-81pxw.png" type="Texture" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 0, -10, 0 )
+gravity = Vector3( 0, -1, 0 )
+initial_velocity = 41.55
+initial_velocity_random = 0.46
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 100.0
+angle = 90.0
+angle_random = 0.5
+color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 26 )
+
+[node name="BasicEnemy" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+texture = ExtResource( 2 )
+hframes = 14
+frame = 3
+
+[node name="Blood" type="Particles2D" parent="KinematicBody2D"]
+scale = Vector2( 10, 10 )
+emitting = false
+amount = 64
+lifetime = 5.0
+process_material = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0, -6.00645 )
+rotation = -1.57079
+shape = SubResource( 2 )

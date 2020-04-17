@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Audio/what can be loosely defined as music.wav" type="AudioStream" id=1]
 [ext_resource path="res://Tilesets/Tilemaps/Walls.tres" type="TileSet" id=2]
 [ext_resource path="res://Tilesets/Tilemaps/Items.tres" type="TileSet" id=3]
 [ext_resource path="res://Tilesets/Tilemaps/Ground.tres" type="TileSet" id=4]
@@ -10,11 +9,6 @@
 [ext_resource path="res://Scenes/Enemies/EnemyW.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-volume_db = -20.0
-autoplay = true
 
 [node name="Ground" type="TileMap" parent="."]
 z_index = -10

@@ -25,8 +25,6 @@ func spawn_enemy() -> void:
 	var new_pos = Vector2(rand_range(min_x, max_x), rand_range(min_y, max_y))
 	new_enemy.position = new_pos
 	get_parent().add_child(new_enemy)
-	print("Enemy spawned! ", new_enemy, "at ", new_pos)
-
 
 func calculate_bounds():
 	var used_cells = ground_tilemap.get_used_cells()
@@ -53,7 +51,3 @@ func calculate_bounds():
 	min_y *= 81
 	max_x *= 81
 	max_y *= 81
-	
-	
-	print("Bounds: ", min_x," ", min_y, " ", max_x, " ", max_y )
-

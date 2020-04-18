@@ -5,6 +5,7 @@ signal enemy_hit
 export (Vector2) var bullet_direction
 export (float) var bullet_range 
 export (float) var bullet_speed
+export (float) var bullet_damage
 
 func _ready() -> void:
 	var bullet_lifetime : float = bullet_range / bullet_speed
@@ -20,7 +21,7 @@ func _physics_process(delta: float):
 		var collider = collision_info.get_collider()
 		if collider.has_method("hit"):
 			emit_signal("enemy_hit")
-			collider.hit()
+			collider.hit(bullet_damage)
 		explode()
 
 func explode():

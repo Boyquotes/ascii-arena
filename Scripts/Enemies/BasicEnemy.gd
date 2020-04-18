@@ -7,16 +7,19 @@ onready var raycast : RayCast2D = $RayCast2D
 export var speed : float = 180.0
 export var damage : float = 5.0
 export var hit_rate : float = 2.0
+export var max_health : float = 20.0
 
 var target = null
 var dead : bool = false
 var can_hit : bool = true
 
 var score : float
+var health : float
 
 func _ready():
 	randomize()
-	score = ((speed / 180.0) * (damage / 5.0) * (hit_rate) / 2.0) * 3.0
+	score = ((speed / 180.0) * (damage / 5.0) * (hit_rate / 2.0) * (max_health / 20.0)) * 3.0
+	health = max_health
 	cooldown_timer.wait_time = 1.0 / hit_rate
 	cooldown_timer.connect("timeout", self, "_on_cooldown")
 	add_to_group("enemies")
@@ -44,8 +47,10 @@ func _process(delta):
 func _on_cooldown() -> void:
 	can_hit = true
 
-func hit() -> void:
-	die()
+func hit(damage: float) -> void:
+	health -= damage
+	if health < 0:
+		die()
 
 func delete_self() -> void:
 	get_parent().remove_child(self)

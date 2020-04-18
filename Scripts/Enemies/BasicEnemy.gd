@@ -4,16 +4,19 @@ onready var blood : Particles2D = $Blood
 onready var cooldown_timer : Timer = $Timer
 onready var raycast : RayCast2D = $RayCast2D
 
-export var speed : int = 180
-export var damage : int = 5
+export var speed : float = 180.0
+export var damage : float = 5.0
 export var hit_rate : float = 2.0
 
 var target = null
 var dead : bool = false
 var can_hit : bool = true
 
+var score : float
+
 func _ready():
 	randomize()
+	score = ((speed / 180.0) * (damage / 5.0) * (hit_rate) / 2.0) * 3.0
 	cooldown_timer.wait_time = 1.0 / hit_rate
 	cooldown_timer.connect("timeout", self, "_on_cooldown")
 	add_to_group("enemies")
@@ -50,6 +53,8 @@ func delete_self() -> void:
 func die() -> void:
 	if !dead:
 		dead = !dead
+		
+		get_tree().call_group("lifetime_ui", "increment", score)
 		
 		set_collision_layer_bit(0, false)
 		set_collision_mask_bit(0, false)

@@ -22,8 +22,8 @@ func handle_input() -> void:
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
-func hit(damage: int) -> void:
-	get_tree().call_group("lifetime_ui", "decrement", damage if damage else 1)
+func hit(damage: float) -> void:
+	get_tree().call_group("lifetime_ui", "decrement", damage if damage else 1.0)
 
 func die() -> void:
 	remove_child($Gun)

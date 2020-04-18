@@ -25,24 +25,24 @@ func _ready():
 	add_to_group("enemies")
 	
 func _process(delta):
-	if target == null:
-		global_rotation += (0.25 + randi() % 5) * delta
-		if raycast.is_colliding():
-			var collider = raycast.get_collider()
-			if collider.is_in_group("player"):
-				target = collider
+	if dead == false:
+		if target == null:
+			global_rotation += (0.25 + randi() % 5) * delta
+			if raycast.is_colliding():
+				var collider = raycast.get_collider()
+				if collider.is_in_group("player"):
+					target = collider
+		else:
+			var vec_to_player = (target.global_position - global_position).normalized()
 	
-	elif dead == false:
-		var vec_to_player = (target.global_position - global_position).normalized()
-
-		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
-		var collision_info = move_and_collide(vec_to_player * speed * delta)
-		if collision_info:
-			var collider = collision_info.get_collider()
-			if collider.has_method("hit") and !collider.is_in_group("enemies") and can_hit:
-				can_hit = !can_hit
-				cooldown_timer.start()
-				collider.hit(damage)
+			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
+			var collision_info = move_and_collide(vec_to_player * speed * delta)
+			if collision_info:
+				var collider = collision_info.get_collider()
+				if collider.has_method("hit") and !collider.is_in_group("enemies") and can_hit:
+					can_hit = !can_hit
+					cooldown_timer.start()
+					collider.hit(damage)
 
 func _on_cooldown() -> void:
 	can_hit = true

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var blood : Particles2D = $Blood
 onready var cooldown_timer : Timer = $Timer
+onready var raycast : RayCast2D = $RayCast2D
 
 export var speed : int = 180
 export var damage : int = 5
@@ -12,15 +13,20 @@ var dead : bool = false
 var can_hit : bool = true
 
 func _ready():
+	randomize()
 	cooldown_timer.wait_time = 1.0 / hit_rate
 	cooldown_timer.connect("timeout", self, "_on_cooldown")
 	add_to_group("enemies")
 	
 func _process(delta):
 	if target == null:
-		return
+		global_rotation += (0.25 + randi() % 5) * delta
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider.is_in_group("player"):
+				target = collider
 	
-	if dead == false:
+	elif dead == false:
 		var vec_to_player = (target.global_position - global_position).normalized()
 
 		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
@@ -34,9 +40,6 @@ func _process(delta):
 
 func _on_cooldown() -> void:
 	can_hit = true
-
-func set_target(t) -> void:
-	target = t
 
 func hit() -> void:
 	die()

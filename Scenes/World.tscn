@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tilemaps/Walls.tres" type="TileSet" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://Scenes/Enemies/EnemyK.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Enemies/EnemyV.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Enemies/EnemyW.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Tilemaps/basic-81pxw.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/Spawner.gd" type="Script" id=10]
 
 [node name="World" type="Node2D"]
 
@@ -63,16 +61,3 @@ position = Vector2( 1179.93, 144.673 )
 [node name="CanvasLayer" parent="." instance=ExtResource( 1 )]
 offset = Vector2( 12, 12 )
 transform = Transform2D( 1, 0, 0, 1, 12, 12 )
-
-[node name="Spawner" type="Node2D" parent="."]
-position = Vector2( 1450, 1280 )
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Spawner"]
-texture = ExtResource( 9 )
-hframes = 14
-
-[node name="Timer" type="Timer" parent="Spawner"]

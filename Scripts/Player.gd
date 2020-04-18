@@ -8,7 +8,6 @@ var velocity: Vector2
 
 func _ready() -> void:
 	yield(get_tree(), "idle_frame")
-	get_tree().call_group("enemies", "set_target", self)
 	add_to_group("player")
 
 func _process(delta) -> void:

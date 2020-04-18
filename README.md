@@ -7,7 +7,7 @@
 * k to restart game
 
 * Left mouse button to fire
-* LifeTime depletes over time and when hit by enemies
+* LifeTime (represented by the red bar) depletes over time and when hit by enemies. Let it drop to zero and you die.
 * LifeTime increases on kills earned (as does score)
 
 # Old Screenshots
